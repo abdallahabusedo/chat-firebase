@@ -11,8 +11,8 @@ const reqAuth = (to,from,next) => {
     next({name: 'Welcome'})
   }
   next()
-
 }
+
 
 const routes = [
   {

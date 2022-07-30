@@ -2,6 +2,7 @@
 import * as firebase from 'firebase/app'
 import * as auth from 'firebase/auth'
 import * as firestore from 'firebase/firestore'
+import { Firestore, serverTimestamp } from 'firebase/firestore';
 const firebaseConfig = {
     apiKey: "AIzaSyB0LKmor7Y7wQepgQCJOnq4mIwz1WWQ2dE",
     authDomain: "chat-room-firebase-2bdfe.firebaseapp.com",
@@ -15,7 +16,7 @@ firebase.initializeApp(firebaseConfig);
 console.log(firebase.initializeApp(firebaseConfig));
 
 const aut = auth
-const projectfirestore = firestore
-console.log("useSignup aut",aut);
+const projectfirestore = Firestore
+const timestamp =  serverTimestamp()
 
-export {aut,projectfirestore}
+export {aut,projectfirestore,timestamp}

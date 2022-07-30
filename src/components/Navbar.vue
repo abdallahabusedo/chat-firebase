@@ -17,7 +17,7 @@ export default {
         const {error ,logout} = useLogout()
 
         const {user} = getUser()
-        
+
         const handleClick = async()=> {
             await logout()
             if (!error.value){
