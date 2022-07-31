@@ -8,6 +8,7 @@ const useCollection = (collectionName)=>{
     const addDoce = async (doc)=>{
     try {
         await addDoc(collection(projectfirestore,collectionName),doc)
+        
     } catch (error) {
         error.value = "colud not send the message"
     }

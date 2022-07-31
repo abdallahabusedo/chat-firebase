@@ -17,13 +17,22 @@ import { defineAsyncComponent } from 'vue'
 
 
 export default {
-    components: { Navbar, 
-    NewChatRoom, 
-    ChatWindow:(()=>{import('@/components/ChatWindow.vue')}) 
+    components: { 
+      Navbar, 
+      NewChatRoom, 
+      // this component is async we need to wait until the data is loaded
+      // TODO: Fix this Component 
+      ChatWindow:ChatWindow
     }, 
     setup(){
-      const {user } = getUser()
+      
+      // getting the user to the chat window 
+      const { user } = getUser()
+      console.log("user in chat window" , user.value.uid);
       const router = useRouter()
+      // watch the user to ensure the links gaurd 
+      // by pushing the the welcome window when there is no user 
+      // by using the useRouter Hook
       watch(user,()=>{
         if(!user.value){
           router.push({name:"Welcome"})

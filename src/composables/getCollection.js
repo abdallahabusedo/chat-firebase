@@ -2,7 +2,7 @@ import { ref } from "vue"
 import {projectfirestore} from "./../../cons"
 import { collection ,getDocs,query, orderBy} from "firebase/firestore"; 
 
-const Doc = ref(null)
+const Doc = ref([])
 const error = ref(null)
 const getCollection = async (collectionName)=>{
     const collectionq = query(collection(projectfirestore,collectionName), orderBy("createdAt"))
@@ -13,6 +13,8 @@ const getCollection = async (collectionName)=>{
         error.value = "could not fetch the data"
         Doc.value = null
     }
+    console.log("docs.value in get Collection",Doc.value)
+    console.log("error.value",error.value)
 
     return { error, Doc }
 }
