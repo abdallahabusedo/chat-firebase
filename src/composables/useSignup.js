@@ -2,9 +2,7 @@
 import { aut } from "./../../cons"
 import { ref } from "vue"
 import { getAuth, updateProfile } from "firebase/auth";
-console.log("useSignup ",aut);
 const error = ref(null)
-
 
 const signup = async ( UserName, Email , Password ) => {
     error.value = null // reset the error value
@@ -21,13 +19,12 @@ const signup = async ( UserName, Email , Password ) => {
         })  
     }
     catch(e){
-        console.log(e.message)
         error.value = e.message
     }
 }
 
 const useSignup = () => {
-    return{error , signup}
+    return {error , signup}
 }
 
 export  default useSignup

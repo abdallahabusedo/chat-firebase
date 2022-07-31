@@ -10,10 +10,8 @@ const login = async ( Email , Password ) => {
    try {
         const res = await aut.signInWithEmailAndPassword(getAuth(),Email, Password)
         error.value= null
-        console.log(res);
         return res
    } catch (err) {
-        console.log(err.value)
         error.value= "incorrect email or password";
    }
 }

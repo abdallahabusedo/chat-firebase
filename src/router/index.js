@@ -6,7 +6,6 @@ import { getAuth } from 'firebase/auth'
 // route guard 
 const reqAuth = (to,from,next) => {
   let user = getAuth().currentUser
-  console.log("user gard",user);
   if (!user) {
     next({name: 'Welcome'})
   }

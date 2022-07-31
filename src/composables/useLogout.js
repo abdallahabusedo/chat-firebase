@@ -11,7 +11,6 @@ const logout = async () => {
         error.value= null
 
    } catch (err) {
-        console.log(err.value)
         error.value= "incorrect email or password";
    }
 }
