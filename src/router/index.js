@@ -1,11 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Welcome from "../views/Welcome"
 import Chatroom from "../views/Chatroom"
-import {aut} from './../../cons'
-import { getAuth } from 'firebase/auth'
+import {auth} from './../firebase/config'
+import getUser from '@/composables/getUser'
+
 // route guard 
 const reqAuth = (to,from,next) => {
-  let user = getAuth().currentUser
+  let {user} = getUser()
+  console.log("user in index.js " , user);
   if (!user) {
     next({name: 'Welcome'})
   }

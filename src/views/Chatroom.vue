@@ -22,19 +22,19 @@ export default {
       NewChatRoom, 
       // this component is async we need to wait until the data is loaded
       // TODO: Fix this Component 
-      ChatWindow:ChatWindow
+      ChatWindow
     }, 
     setup(){
       
       // getting the user to the chat window 
       const { user } = getUser()
-      console.log("user in chat window" , user.value.uid);
+      // console.log("user in chat window" , user.value.name);
       const router = useRouter()
       // watch the user to ensure the links gaurd 
       // by pushing the the welcome window when there is no user 
       // by using the useRouter Hook
       watch(user,()=>{
-        if(!user.value){
+        if(!user){
           router.push({name:"Welcome"})
         }
       })

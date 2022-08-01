@@ -1,14 +1,14 @@
-import { aut } from "./../../cons"
+import { auth } from "./../firebase/config"
 import { ref } from "vue"
-import { getAuth } from "firebase/auth";
+import { getAuth,signOut } from "firebase/auth";
 const error = ref(null)
 
 
 const logout = async () => {
    error.value = null // reset the error value
    try {
-        await aut.signOut(getAuth())
-        error.value= null
+        // check ig the sign out remove the user from its object
+        await signOut(auth)
 
    } catch (err) {
         error.value= "incorrect email or password";

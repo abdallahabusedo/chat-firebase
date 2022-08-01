@@ -1,15 +1,17 @@
 // import { projectAuth } from "./../firebase/config"
-import { aut } from "./../../cons"
+import { auth } from "./../firebase/config"
 import { ref } from "vue"
-import { getAuth, updateProfile } from "firebase/auth";
+import {  updateProfile ,createUserWithEmailAndPassword } from "firebase/auth";
 const error = ref(null)
 
 const signup = async ( UserName, Email , Password ) => {
     error.value = null // reset the error value
     try{
-        await aut.createUserWithEmailAndPassword(getAuth(),Email, Password)
+       await createUserWithEmailAndPassword(auth,Email, Password)
         .then(() => {
-            updateProfile(getAuth().currentUser,{
+            const user = auth.currentUser
+            console.log(user);
+            updateProfile(user,{
                 displayName : UserName,
             })
             error.value = null // reset the error value

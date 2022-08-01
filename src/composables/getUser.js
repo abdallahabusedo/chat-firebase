@@ -1,9 +1,9 @@
-import { getAuth } from 'firebase/auth'
+import {onAuthStateChanged  } from 'firebase/auth'
 import {ref } from 'vue'
-import {aut } from './../../cons'
+import {auth } from "./../firebase/config"
 
-const user = ref(getAuth().currentUser)
-aut.onAuthStateChanged(getAuth(),_user=>{
+const user = ref(auth.currentUser) 
+onAuthStateChanged(auth,_user=>{
     user.value = _user
 })
 

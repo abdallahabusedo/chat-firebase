@@ -1,5 +1,5 @@
 import { ref } from "vue"
-import {projectfirestore} from "./../../cons"
+import {projectfirestore} from "./../firebase/config"
 import { collection, addDoc } from "firebase/firestore"; 
 
 const useCollection = (collectionName)=>{
@@ -13,15 +13,6 @@ const useCollection = (collectionName)=>{
         error.value = "colud not send the message"
     }
 }
-    // const addDoc = async (doc)=>{
-    //     error.value = null
-    //     try {
-    //         await projectfirestore.collection(collection).add(doc)
-    //     } catch (error) {
-    //         console.log(error.message);
-    //         error.value = "colud not send the message"
-    //     }
-    // }
     return{error,addDoce }
 }
 

@@ -1,14 +1,20 @@
 <template>
   <div class="welcome container">
     <p>Welcome to Posidoon Chat Room</p>
+
+    <!-- sign up Component --> 
     <div v-if="TogglePages">
         <h2>Sign Up 👋</h2>
         <SignupForm @signup="enterChat" />
     </div>
+
+    <!-- Log in Component -->
     <div v-if="!TogglePages">
         <h2>Log In 💕</h2>
         <LoginForm @login="enterChat" />
     </div>
+
+    <!-- Switch Components -->
     <div @click="TogglePages = !TogglePages">
         <div v-if="TogglePages" >
             <p>
@@ -22,21 +28,28 @@
         </div>
     </div>
   </div>
+
 </template>
 
 <script>
+// imports
 import SignupForm from '../components/SignupForm.vue'
 import LoginForm from '../components/LoginForm.vue'
 import { ref } from '@vue/reactivity'
 import { useRouter } from 'vue-router'
+
+
 export default {
 components: { SignupForm, LoginForm },
 setup(){
-    const TogglePages = ref(false)
-    const router = useRouter()
-    const enterChat = () =>{
+    const TogglePages = ref(false)  // toggle pages 
+    const router = useRouter()  // initialize router
+    // Route after Authentication
+    const enterChat = () =>{ 
         router.push({name: 'ChatRoom' })
     }
+
+    // return
     return{
          TogglePages,
          enterChat

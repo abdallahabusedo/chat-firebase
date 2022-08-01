@@ -10,7 +10,7 @@
 <script>
 import { ref } from '@vue/reactivity'
 import getUser from '@/composables/getUser'
-import { timestamp } from './../../cons'
+import { timestamp } from './../firebase/config'
 import useCollection from '@/composables/useCollection'
 
 export default {

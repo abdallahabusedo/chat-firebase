@@ -1,28 +1,20 @@
 
-// import  firebase from 'firebase/app'
-// require('firebase/firestore')
-// import 'firebase/auth'
+import * as firebase from 'firebase/app'
+import { getAuth } from 'firebase/auth';
+import { getFirestore, serverTimestamp } from 'firebase/firestore';
+const firebaseConfig = {
+    apiKey: "AIzaSyB0LKmor7Y7wQepgQCJOnq4mIwz1WWQ2dE",
+    authDomain: "chat-room-firebase-2bdfe.firebaseapp.com",
+    projectId: "chat-room-firebase-2bdfe",
+    storageBucket: "chat-room-firebase-2bdfe.appspot.com",
+    messagingSenderId: "943046024495",
+    appId: "1:943046024495:web:da0acdcd72d47bc6bed5da"
+};
 
-// const firebaseConfig = {
-//     apiKey: "AIzaSyB0LKmor7Y7wQepgQCJOnq4mIwz1WWQ2dE",
-//     authDomain: "chat-room-firebase-2bdfe.firebaseapp.com",
-//     projectId: "chat-room-firebase-2bdfe",
-//     storageBucket: "chat-room-firebase-2bdfe.appspot.com",
-//     messagingSenderId: "943046024495",
-//     databaseURL: "https://Chat-Room-Firebase.firebaseio.com",
-//     appId: "1:943046024495:web:da0acdcd72d47bc6bed5da"
-// };
+const app = firebase.initializeApp(firebaseConfig);
 
-// // init firebase
-// firebase.initializeApp(firebaseConfig)
+const auth = getAuth(app)
+const projectfirestore = getFirestore(app)
+const timestamp =  serverTimestamp()
 
-// const projectAuth = firebase.auth
-// const projectFirestore = firebase.firestore
-// //console.log("timestamp: " + firebase.firestore);
-// //const timestamp = firebase.firestore.FeildValue.serverTimestamp
-// console.log("config",projectAuth);
-// export {
-//     projectFirestore,
-//    // timestamp,
-//     projectAuth
-// }
+export {auth,projectfirestore,timestamp}

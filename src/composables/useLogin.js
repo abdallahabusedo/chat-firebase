@@ -1,14 +1,14 @@
 // import { projectAuth } from "./../firebase/config"
-import { aut } from "./../../cons"
+import { auth } from "./../firebase/config"
 import { ref } from "vue"
-import { getAuth, updateProfile } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 const error = ref(null)
 
 
 const login = async ( Email , Password ) => {
     error.value = null // reset the error value
    try {
-        const res = await aut.signInWithEmailAndPassword(getAuth(),Email, Password)
+        const res = await signInWithEmailAndPassword(auth,Email, Password)
         error.value= null
         return res
    } catch (err) {

@@ -1,10 +1,10 @@
 import { ref } from "vue"
-import {projectfirestore} from "./../../cons"
+import {projectfirestore} from "./../firebase/config"
 import { collection ,getDocs,query, orderBy} from "firebase/firestore"; 
 
-const Doc = ref([])
-const error = ref(null)
 const getCollection = async (collectionName)=>{
+    const Doc = ref([])
+    const error = ref(null)
     const collectionq = query(collection(projectfirestore,collectionName), orderBy("createdAt"))
     await (await getDocs(collectionq)).forEach(doc=>{
         doc.data().createdAt && Doc.value.push({...doc.data(),id:doc.id})

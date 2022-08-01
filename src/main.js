@@ -1,12 +1,12 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
-import { aut } from "./../cons"
+import { auth } from "./firebase/config"
 import './assets/main.css'
-import { getAuth } from 'firebase/auth'
+import { getAuth ,onAuthStateChanged} from 'firebase/auth'
 let app 
 
-aut.onAuthStateChanged(getAuth(),()=>{
+onAuthStateChanged(auth,()=>{
     if (!app){
         app = createApp(App)
             .use(router)
