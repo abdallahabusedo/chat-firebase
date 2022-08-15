@@ -1,5 +1,6 @@
 <template>
   <div class="welcome container">
+    <img src="./../assets/PosidoonChat.png" class="logo" />
     <p>Welcome to Posidoon Chat Room</p>
 
     <!-- sign up Component --> 
@@ -42,7 +43,7 @@ import { useRouter } from 'vue-router'
 export default {
 components: { SignupForm, LoginForm },
 setup(){
-    const TogglePages = ref(false)  // toggle pages 
+    const TogglePages = ref(true)  // toggle pages 
     const router = useRouter()  // initialize router
     // Route after Authentication
     const enterChat = () =>{ 
@@ -60,6 +61,10 @@ setup(){
 </script>
 
 <style>
+    .logo{
+        width: 50%;
+        margin: 15px;
+    }
     .welcome{
         text-align: center;
         padding: 20px 0;
@@ -78,7 +83,7 @@ setup(){
         border-radius:20px ;
         border: 1px solid #eee;
         outline: none;
-        color: #999;
+        color: rgb(42, 42, 42);
         margin: 10px auto;
     }
 </style>

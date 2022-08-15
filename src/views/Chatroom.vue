@@ -34,7 +34,7 @@ export default {
       // by pushing the the welcome window when there is no user 
       // by using the useRouter Hook
       watch(user,()=>{
-        if(!user){
+        if(!user.value){
           router.push({name:"Welcome"})
         }
       })
