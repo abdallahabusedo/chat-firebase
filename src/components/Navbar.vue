@@ -18,7 +18,6 @@ export default {
         const {error ,logout} = useLogout()
 
         const {user} = getUser()
-        console.log("User created",user);
         const router = useRouter()
         const handleClick = async()=> {
             await logout()

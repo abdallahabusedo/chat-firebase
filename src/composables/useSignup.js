@@ -10,7 +10,6 @@ const signup = async ( UserName, Email , Password ) => {
        await createUserWithEmailAndPassword(auth,Email, Password)
         .then(() => {
             const user = auth.currentUser
-            console.log(user);
             updateProfile(user,{
                 displayName : UserName,
             })

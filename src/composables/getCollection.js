@@ -1,20 +1,23 @@
 import { ref } from "vue"
 import {projectfirestore} from "./../firebase/config"
-import { collection ,getDocs,query, orderBy} from "firebase/firestore"; 
+import { collection ,query, orderBy, onSnapshot} from "firebase/firestore"; 
 
-const getCollection = async (collectionName)=>{
-    const Doc = ref([])
+const getCollection = (collectionName)=>{
+    const Doc = ref(null)
     const error = ref(null)
-    const collectionq = query(collection(projectfirestore,collectionName), orderBy("createdAt"))
-    await (await getDocs(collectionq)).forEach(doc=>{
-        doc.data().createdAt && Doc.value.push({...doc.data(),id:doc.id})
-    })
-    if (!Doc.value) {
-        error.value = "could not fetch the data"
+    const collectionQuery = query(collection(projectfirestore,collectionName), orderBy("createdAt"))
+    onSnapshot(collectionQuery, (querySnapshot) => {
+        let results = []
+        querySnapshot.forEach((doc)=>{
+            doc.data().createdAt && results.push({...doc.data(), id: doc.id})
+        })
+        Doc.value = results
+        error.value = null
+      }, err =>{
+        console.log(err.message)
         Doc.value = null
-    }
-    console.log("docs.value in get Collection",Doc.value)
-    console.log("error.value",error.value)
+        error.value = err.message
+      });
 
     return { error, Doc }
 }

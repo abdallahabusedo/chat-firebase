@@ -7,7 +7,6 @@ import getUser from '@/composables/getUser'
 // route guard 
 const reqAuth = (to,from,next) => {
   let {user} = getUser()
-  console.log("user in index.js " , user);
   if (!user) {
     next({name: 'Welcome'})
   }
